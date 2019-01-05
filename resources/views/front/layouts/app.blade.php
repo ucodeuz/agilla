@@ -6,9 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Start Project</title>
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-
+    <title>Agilla</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -25,8 +23,7 @@
             <nav class="navbar navbar-expand-md navbar-dark">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{-- {{ config('app.name', 'Laravel') }} --}}
-                        Start Project
+                        Agilla
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
@@ -89,7 +86,7 @@
         <footer>
             <div class="container">
                 <div class="border-top pt-3">
-                <p>&copy; {{ date('Y') }} - Start Project</p>
+                <p>&copy; {{ date('Y') }} - Agilla</p>
                 </div>
             </div>
         </footer>
