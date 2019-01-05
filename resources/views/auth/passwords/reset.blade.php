@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('breadcrumbs')
 <ul class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Home</a></li>

@@ -12,12 +12,8 @@
 */
 
 Route::get('/', 'Front\HomeController@index')->name('home');
-Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'Admin',
-    'middleware' => 'auth'
-], function () {
-    Route::get('/cabinet', 'Admin\Cabinet\HomeController@index')->name('cabinet');
-});
+
+Route::get('/cabinet', 'Admin\Cabinet\HomeController@index')->name('cabinet');
+
 Auth::routes();
 

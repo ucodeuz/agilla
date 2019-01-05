@@ -19,6 +19,7 @@
 </head>
 <body>
     <header>
+        @auth
         <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">Admin panel Agilla</a>
@@ -48,6 +49,7 @@
                 </div>
             </div>
         </nav>
+        @endauth
     </header>
     <main class="app-content py-3">
         <div class="container">
