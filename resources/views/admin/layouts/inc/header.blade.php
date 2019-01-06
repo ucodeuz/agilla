@@ -10,7 +10,13 @@
     </button>
     <div class="dropdown-menu dropdown-menu-right">
       <a class="dropdown-item" href="/profile">Профиль</a>
-      <a class="dropdown-item" href="#">Выйти</a>
+      <a class="dropdown-item" title="Выйти" onclick="event.preventDefault();
+    document.getElementById('logout-form').submit();">
+       {{ __('Выйти') }}
+    </a>
     </div>
   </div>
+  <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+      @csrf
+    </form>
 </header>

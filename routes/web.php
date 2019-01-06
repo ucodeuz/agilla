@@ -24,6 +24,7 @@ Route::group([
     'middleware' => 'auth:admin'
 ], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
     Route::resource('departments', 'Department\DepartmentController');
     Route::resource('employees', 'Employee\EmployeeController');
 });

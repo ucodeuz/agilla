@@ -41,11 +41,13 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        // if(\Auth::guard('web')->check()){
-            // return redirect()->route('cp.dashboard');
-        // }
-        return view('admin.auth.login');
+        if(Auth::guard('admin')->check()){
+            return redirect()->route('dashboard');
+        }else{
+            return view('admin.auth.login');
+        }
     }
+    
     public function login(Request $request){
         $request->validate([
             $this->username() => 'required|string',
@@ -80,14 +82,20 @@ class LoginController extends Controller
                 ?: redirect()->intended($this->redirectPath());
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        return redirect('/');
+    }
+
     public function username()
     {
         return 'email';
     }
-
+    
     protected function guard()
     {
         return Auth::guard('admin');
     }
-
 }

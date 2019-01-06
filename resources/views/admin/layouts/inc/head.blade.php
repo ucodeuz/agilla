@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="/admin/css/style.css">
 <link rel="stylesheet" href="/admin/css/icons.css">
 <!-- Scripts -->
-<script src="/js/jquery.js"></script>
-<script src="/js/popper.js"></script>
-<script src="/js/bootstrap.js"></script>
-<script src="/js/tablednd.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/autosize.js"></script>
+<script src="/admin/js/jquery.js"></script>
+<script src="/admin/js/popper.js"></script>
+<script src="/admin/js/bootstrap.js"></script>
+<script src="/admin/js/tablednd.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/autosize.js"></script>
