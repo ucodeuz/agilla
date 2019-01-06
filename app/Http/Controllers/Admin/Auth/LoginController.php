@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+use App\Models\Employee;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,8 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cabinet';
-
+    protected $redirectTo = '/cp/dashboard';
     /**
      * Create a new controller instance.
      *
@@ -39,7 +41,53 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        // if(\Auth::guard('web')->check()){
+            // return redirect()->route('cp.dashboard');
+        // }
+        return view('admin.auth.login');
+    }
+    public function login(Request $request){
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+        
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+    }
+
+    protected function credentials(Request $request)
+    {
+        return $request->only($this->username(), 'password');
+    }
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()->intended($this->redirectPath());
+    }
+
+    public function username()
+    {
+        return 'email';
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 
 }

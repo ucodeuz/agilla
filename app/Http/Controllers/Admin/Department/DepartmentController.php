@@ -1,17 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Employee;
+namespace App\Http\Controllers\Admin\Department;
 
 use Illuminate\Http\Request;
-use App\Models\Employee;
 use App\Http\Controllers\Controller;
-class EmployeeController extends Controller
+use App\Models\Department;
+
+class DepartmentController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         //
-        $employees = Employee::all();
-        return view('admin.employees.index', compact('employees'));
+        $departments = Department::all();
+        return view('deparments.index', compact('departments'));
+
     }
 
     /**

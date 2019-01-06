@@ -79,7 +79,6 @@
                     </ul>
                 @endsection
                 @yield('breadcrumbs')
-                @include('layouts.partials.flesh')
                 @yield('content')
             </div>
         </main>

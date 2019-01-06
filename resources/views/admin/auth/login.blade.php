@@ -1,11 +1,9 @@
-@extends('admin.layouts.app')
-@section('breadcrumbs')
-<ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active">Login</li>
-</ul>
-@endsection
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @include('admin.layouts.inc.head')
+</head>
+<body>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -13,7 +11,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -75,4 +73,5 @@
         </div>
     </div>
 </div>
-@endsection
+</body>
+</html>

@@ -13,7 +13,19 @@
 
 Route::get('/', 'Front\HomeController@index')->name('home');
 
-Route::get('/cabinet', 'Admin\Cabinet\HomeController@index')->name('cabinet');
+Route::get('/cp', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+Route::post('/cp', 'Admin\Auth\LoginController@login');
 
+Route::get('/cabinet', 'Admin\Cabinet\HomeController@index')->name('cabinet');
 Auth::routes();
+Route::group([
+    'prefix' => 'cp',
+    'namespace' => 'Admin',
+    'middleware' => 'auth:admin'
+], function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('departments', 'Department\DepartmentController');
+    Route::resource('employees', 'Employee\EmployeeController');
+});
+
 
