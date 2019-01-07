@@ -57,7 +57,7 @@
         </a>
       </li>
       <li class="nan-item">
-        <a class="nav-link" href="/departments">
+        <a class="nav-link" href="{{ route('departments.index') }}">
           <i class="icon icon-user"></i>
           <span class="text">Отделы</span>
         </a>

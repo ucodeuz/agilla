@@ -1,9 +1,15 @@
-<div class="card card-100">
-  <div class="card-header">
-    <div class="card-title">Список отделов</div>
+@extends('admin.layouts.main')
+@section('content')
+<div class="page-header">
+  <div class="page-header-main">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Отделы</li>
+    </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#departmentAdd">Создать отдел</a>
   </div>
-  <div class="card-body">
+</div>
+<div class="page-content">
+  <div class="card">
     <table class="table">
       <thead>
         <tr>
@@ -35,6 +41,6 @@
     </table>
   </div>
 </div>
-
-<? include('add.php'); ?>
-<? include('view.php'); ?>
+@include('admin.departments.add')
+@include('admin.departments.view')
+@endsection
