@@ -3,7 +3,7 @@
 <div class="page-header">
   <div class="page-header-main">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">Сотрудники</li>
+      <li class="breadcrumb-item">Оргструктура</li>
     </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#employeeAdd" role="button">Добавить сотрудника</a>
   </div>
@@ -15,7 +15,7 @@
         <tr>
           <th width="8%">ID</th>
           <th width="62%">Имя и фамилия</th>
-          <th width="30%">Отдел</th>
+          <th width="30%">Роль</th>
           <th width="0%"></th>
         </tr>
       </thead>
@@ -23,7 +23,7 @@
         <tr>
           <td>15</td>
           <td><a class="font-weight-bold" data-toggle="modal" data-target="#employeeView">Jaloliddin Kholmatov</a></td>
-          <td>Разработчики</td>
+          <td>Администратор</td>
           <td>
             <div class="table-action">
               <a class="btn btn-icon" href="/employees/edit" title="Редактировать"><i class="icon icon-edit"></i></a>
@@ -33,7 +33,7 @@
         <tr>
           <td>25</td>
           <td><a class="font-weight-bold" data-toggle="modal" data-target="#employeeView">Jaloliddin Kholmatov</a></td>
-          <td>Оператори</td>
+          <td>Модератор</td>
           <td>
             <div class="table-action">
               <a class="btn btn-icon" href="/employees/edit" title="Редактировать"><i class="icon icon-edit"></i></a>

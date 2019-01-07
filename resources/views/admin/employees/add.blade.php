@@ -8,13 +8,13 @@
       <div class="modal-body">
             <div class="form-group form-row form-item-required">
       <div class="col-4 col-form-label">
-        <label class="form-label" for="group">Отдел</label>
+        <label class="form-label" for="group">Роль</label>
       </div>
       <div class="col-8">
-        <select class="custom-select" id="group" name="group" required>
+        <select class="custom-select" id="group" name="role" required>
           <option value="0" selected disabled>Невыбран</option>
-          <option value="1">Разработчики</option>
-          <option value="2">Оператори</option>
+          <option value="1">Администратор</option>
+          <option value="2">Модератор</option>
         </select>
       </div>
     </div>

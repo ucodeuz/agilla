@@ -53,13 +53,7 @@
       <li class="nan-item">
         <a class="nav-link" href="{{ route('employees.index') }}">
           <i class="icon icon-team"></i>
-          <span class="text">Сотрудники</span>
-        </a>
-      </li>
-      <li class="nan-item">
-        <a class="nav-link" href="{{ route('departments.index') }}">
-          <i class="icon icon-user"></i>
-          <span class="text">Отделы</span>
+          <span class="text">Оргструктура</span>
         </a>
       </li>
       <li class="nan-item d-none">

@@ -7,8 +7,8 @@
       </div>
       <div class="modal-body">
         <dl>
-          <dt>Группа</dt>
-          <dd>Разработчики</dd>
+          <dt>Роль</dt>
+          <dd>Администратор</dd>
         </dl>
         <dl>
           <dt>Имя и фамилия</dt>
