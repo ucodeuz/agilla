@@ -4,8 +4,8 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Styles -->
-<link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/bootstrap-grid.css">
+<link rel="stylesheet" href="/admin/css/bootstrap.css">
+<link rel="stylesheet" href="/admin/css/bootstrap-grid.css">
 <link rel="stylesheet" href="/admin/css/style.css">
 <link rel="stylesheet" href="/admin/css/icons.css">
 <!-- Scripts -->

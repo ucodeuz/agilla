@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'icons';
   src:
-    url('/font/icons.ttf?zdgpi5') format('truetype'),
-    url('/font/icons.woff?zdgpi5') format('woff'),
-    url('/font/icons.svg?zdgpi5#icons') format('svg');
+    url('/admin/font/icons.ttf?bzg9ju') format('truetype'),
+    url('/admin/font/icons.woff?bzg9ju') format('woff'),
+    url('/admin/font/icons.svg?bzg9ju#icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -20,6 +20,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-checkmark2:before {
+  content: "\e919";
+}
+.icon-checkmark:before {
+  content: "\e91a";
+}
+.icon-map:before {
+  content: "\e915";
+}
+.icon-folder:before {
+  content: "\e916";
+}
+.icon-clipboard-checklist:before {
+  content: "\e917";
+}
+.icon-mail:before {
+  content: "\e918";
+}
 .icon-close:before {
   content: "\e914";
 }

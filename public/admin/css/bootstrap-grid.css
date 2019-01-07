@@ -26,8 +26,8 @@ html {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -12px;
-  margin-left: -12px;
+  margin-right: -6px;
+  margin-left: -6px;
 }
 
 .no-gutters {
@@ -50,8 +50,8 @@ html {
   position: relative;
   width: 100%;
   min-height: 1px;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 6px;
+  padding-left: 6px;
 }
 
 .col {

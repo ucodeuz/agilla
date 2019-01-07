@@ -1,11 +1,15 @@
 @extends('admin.layouts.main')
 @section('content')
-<div class="card card-100">
-  <div class="card-header">
-    <div class="card-title">Список сотрудников</div>
+<div class="page-header">
+  <div class="page-header-main">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Сотрудники</li>
+    </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#employeeAdd" role="button">Добавить сотрудника</a>
   </div>
-  <div class="card-body">
+</div>
+<div class="page-content">
+  <div class="card">
     <table class="table table-hover">
       <thead>
         <tr>
