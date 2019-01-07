@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Cabinet;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -15,10 +17,19 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index(){
-        return view("admin.cabinet.home");
+        $employeeId = Auth::user()->id;
+        $employee = Employee::with('department')->whereId($employeeId)->first();
+        return view("admin.employees.profile", compact('employee'));
+    }
+
+    public function update(Request $request){
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6',
+        ]);
+        return redirect()->back()->with('success', "успешно отредактирована!");
     }
 }

@@ -9,7 +9,7 @@
       <i class="icon icon-male-user"></i><span class="text">Jaloliddin Kholmatov</span>
     </button>
     <div class="dropdown-menu dropdown-menu-right">
-      <a class="dropdown-item" href="/profile">Профиль</a>
+      <a class="dropdown-item" href="{{ route('profile') }}">Профиль</a>
       <a class="dropdown-item" title="Выйти" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();">
        {{ __('Выйти') }}
