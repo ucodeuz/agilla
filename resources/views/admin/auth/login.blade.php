@@ -20,6 +20,7 @@
     </div>
     <button type="submit" class="btn btn-block btn-primary">
         {{ __('Войты') }}
+        
     </button>
   </form>
 </div>

@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    protected $table = "employee_types";
     protected $fillable = [
-        'name',
+        'name', 'guard_name'
     ];
     
     public function employees(){

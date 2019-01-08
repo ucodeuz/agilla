@@ -11,14 +11,16 @@ class DepartmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('departments')->insert([
+        DB::table('employee_types')->insert([
             [
-                'name' => 'Разработчики',
+                'name' => 'Администратор',
+                'guard_name' => 'Administrator',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ],
             [
-                'name' => 'Оператори',
+                'name' => 'Модератор',
+                'guard_name' => 'Moderator',
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ]

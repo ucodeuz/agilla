@@ -26,17 +26,18 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
-        // $gate->define('isAdmin', function($user){
-        //     return $user->department->name == 'Admin';
-        // });
+        
+        $gate->define('isAdministrator', function($user){
+            return $user->employee_type == 'Administrator';
+        });
 
-        // $gate->define('isUser', function($user){
-        //     return $user->department->name == 'User';
-        // });
+        $gate->define('isModerator', function($user){
+            return $user->employee_type == 'Moderator';
+        });
 
-        // $gate->define('isManager', function($user){
-        //     return $user->department->name == 'Manager';
-        // });
+        $gate->define('isUser', function($user){
+            return $user->employee_type == 'User';
+        });
 
         // Passport::routes();
         //

@@ -20,26 +20,18 @@
         </tr>
       </thead>
       <tbody>
+        @foreach ($employees as $employee)
         <tr>
-          <td>15</td>
-          <td><a class="font-weight-bold" data-toggle="modal" data-target="#employeeView">Jaloliddin Kholmatov</a></td>
-          <td>Администратор</td>
+        <td>{{ $employee->id }}</td>
+          <td><a class="font-weight-bold" data-toggle="modal" data-target="#employeeView">{{$employee->name}}</a></td>
+          <td>{{ $employee->employee_type}}</td>
           <td>
             <div class="table-action">
-              <a class="btn btn-icon" href="/employees/edit" title="Редактировать"><i class="icon icon-edit"></i></a>
+              <a class="btn btn-icon" href="/employees/edit{{$employee->id}}" title="Редактировать"><i class="icon icon-edit"></i></a>
             </div>
           </td>
         </tr>
-        <tr>
-          <td>25</td>
-          <td><a class="font-weight-bold" data-toggle="modal" data-target="#employeeView">Jaloliddin Kholmatov</a></td>
-          <td>Модератор</td>
-          <td>
-            <div class="table-action">
-              <a class="btn btn-icon" href="/employees/edit" title="Редактировать"><i class="icon icon-edit"></i></a>
-            </div>
-          </td>
-        </tr>
+        @endforeach
       </tbody>
     </table>
   </div>

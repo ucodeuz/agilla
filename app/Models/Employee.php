@@ -10,7 +10,7 @@ class Employee extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'department_id', 'password',
+        'name', 'email', 'employee_type_id', 'employee_type', 'password',
     ];
     /**
      * The attributes that should be hidden for arrays.

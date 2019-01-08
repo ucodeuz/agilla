@@ -13,9 +13,10 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('employee_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->string('guard_name')->nullable();
             $table->timestamps();
         });
     }
