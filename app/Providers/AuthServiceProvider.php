@@ -38,8 +38,5 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('isUser', function($user){
             return $user->employee_type == 'User';
         });
-
-        // Passport::routes();
-        //
     }
 }

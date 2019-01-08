@@ -7,6 +7,11 @@
     </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#employeeAdd" role="button">Добавить сотрудника</a>
   </div>
+  @if ($errors->any())
+  @foreach ($errors->all() as $error)
+    <div>{{$error}}</div>
+  @endforeach
+@endif
 </div>
 <div class="page-content">
   <div class="card">
@@ -27,7 +32,7 @@
           <td>{{ $employee->employee_type}}</td>
           <td>
             <div class="table-action">
-              <a class="btn btn-icon" href="/employees/edit{{$employee->id}}" title="Редактировать"><i class="icon icon-edit"></i></a>
+              <a class="btn btn-icon" href="{{ route('employees.edit',$employee->id) }}" title="Редактировать"><i class="icon icon-edit"></i></a>
             </div>
           </td>
         </tr>

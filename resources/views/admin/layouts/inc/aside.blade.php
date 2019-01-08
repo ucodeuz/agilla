@@ -67,7 +67,7 @@
     </ul>
     
     <a class="aside-user" href="{{ route('profile') }}">
-      Jaloliddin Kholmatov
+      {{ Auth::user()->name }}
     </a>
 
   </div>
