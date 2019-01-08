@@ -12,6 +12,11 @@
     </form>
   </div>
 </div>
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+      <div>{{$error}}</div>
+    @endforeach
+  @endif
 <div class="page-content">
   <form class="needs-validation" method="post" action="{{ route('profile.update') }}" novalidate>
     @method('put')
@@ -26,10 +31,10 @@
     </div>
     <div class="form-group form-row">
       <div class="col-4 col-form-label">
-        <label class="form-label" for="department">Отдель</label>
+        <label class="form-label" for="department">Роль</label>
       </div>
       <div class="col-8">
-      <input class="form-control" id="department" name="department" type="text" value="{{ $employee['department']['name'] }}" disabled>
+      <input class="form-control" id="department" name="department" type="text" value="{{ $employee['employee_type_id'] == 1 ? 'Администратор' : 'Модератор' }}" disabled>
       </div>
     </div>
     <div class="form-group form-row">

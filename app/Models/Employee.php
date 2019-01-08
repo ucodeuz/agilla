@@ -22,6 +22,6 @@ class Employee extends Authenticatable
     ];
     
     public function department(){
-        return $this->belongsTo('App\Models\Department');
+        return $this->belongsTo('App\Models\Department','id');
     }
 }

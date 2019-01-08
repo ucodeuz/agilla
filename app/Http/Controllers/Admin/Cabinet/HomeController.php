@@ -28,8 +28,13 @@ class HomeController extends Controller
 
     public function update(Request $request){
         $this->validate($request, [
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
+            'password_confirm' => 'required_with:password|same:password|min:6'
         ]);
+        $credentials = $request->only('password');
+        $employee = Auth::user();
+        $employee->password = bcrypt($credentials['password']);
+        $employee->save();
         return redirect()->back()->with('success', "успешно отредактирована!");
     }
 }

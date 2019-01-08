@@ -19,7 +19,7 @@
       <div class="col-8">
         <select class="custom-select" id="group" name="employee_type_id" required>
         <option value="0" @if($employee->employee_type_id != 1 && $employee->employee_type_id != 2) selected @endif disabled>Невыбран</option>
-        <option value="1" @if($employee->employee_type_id == 1) selected @endif>Administrator</option>
+        <option value="1" @if($employee->employee_type_id == 1) selected @endif>Администратор</option>
           <option value="2" @if($employee->employee_type_id == 2) selected @endif>Модератор</option>
         </select>
       </div>
