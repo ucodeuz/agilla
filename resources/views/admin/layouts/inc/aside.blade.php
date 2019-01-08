@@ -5,7 +5,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/offers">
           <i class="icon icon-postcard"></i>
-          <span class="text">Предложение</span>
+          <span class="text">Предложения</span>
           <span class="badge">2</span>
         </a>
       </li>
@@ -43,21 +43,21 @@
           <span class="text">Категории</span>
         </a>
       </li>
-      <li class="nan-item">
+      <li class="nav-item">
         <a class="nav-link" href="/regions">
           <i class="icon icon-map"></i>
           <span class="text">Регионы</span>
         </a>
       </li>
       
-      <li class="nan-item">
+      <li class="nav-item">
         <a class="nav-link" href="{{ route('employees.index') }}">
           <i class="icon icon-team"></i>
           <span class="text">Оргструктура</span>
         </a>
       </li>
       
-      <li class="nan-item">
+      <li class="nav-item">
         <a class="nav-link" href="/stats">
           <i class="icon icon-chart"></i>
           <span class="text">Статистика</span>

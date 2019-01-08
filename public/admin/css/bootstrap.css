@@ -2897,7 +2897,7 @@ input[type="button"].btn-block {
 .card-header {
   display: flex;
   flex-direction: row;
-  padding: 4px 12px;
+  padding: 12px;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -3858,14 +3858,14 @@ button.close {
   align-items: flex-start;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 4px 12px;
+  padding: 12px;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .modal-header .close {
-  padding: 8px 12px;
-  margin: -4px -12px -4px auto;
+  padding: 16px 12px;
+  margin: -12px -12px -12px auto;
 }
 
 .modal-title {
@@ -3892,7 +3892,7 @@ button.close {
   align-items: center;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  padding: 4px 12px;
+  padding: 12px;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
