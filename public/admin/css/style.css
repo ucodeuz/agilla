@@ -486,3 +486,10 @@ dd {
 .user-items {
   margin-top: 6px;
 }
+
+
+.alert {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+}
