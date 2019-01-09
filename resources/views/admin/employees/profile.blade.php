@@ -12,11 +12,6 @@
     </form>
   </div>
 </div>
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-      <div>{{$error}}</div>
-    @endforeach
-  @endif
 <div class="page-content">
   <form class="needs-validation" method="post" action="{{ route('profile.update') }}" novalidate>
     @method('put')

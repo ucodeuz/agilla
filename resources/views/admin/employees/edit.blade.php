@@ -1,10 +1,5 @@
 @extends('admin.layouts.main')
 @section('content')
-@if ($errors->any())
-@foreach ($errors->all() as $error)
-    <div>{{$error}}</div>
-@endforeach
-@endif
 <div class="page-header">
   <div class="page-header-main">
     <ol class="breadcrumb">

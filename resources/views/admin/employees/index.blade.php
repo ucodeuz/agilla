@@ -7,11 +7,6 @@
     </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#employeeAdd" role="button">Добавить сотрудника</a>
   </div>
-  @if ($errors->any())
-  @foreach ($errors->all() as $error)
-    <div>{{$error}}</div>
-  @endforeach
-@endif
 </div>
 <div class="page-content">
   <div class="card">
