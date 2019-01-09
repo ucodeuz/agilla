@@ -7,8 +7,11 @@
 
 
 
-
 $(function() {
+    // alert messages fade out time
+    $('.box').delay(5000).fadeIn('normal', function () {
+        $(this).delay(2500).fadeOut();
+    });
   
   // Bootstrap tabs hash url
   var url = document.location.toString();

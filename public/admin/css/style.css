@@ -178,9 +178,9 @@
 }
 
 /* Tab */
-.tabs {
+/* .tabs {
   
-}
+} */
 .tabs-list {
   padding: 0 24px 0;
   border-bottom: 1px solid #e9ecef;
@@ -334,9 +334,9 @@
 .chat-message {
   padding-right: 20%;
 }
-.chat-message.out .chat-message-inner {
+/* .chat-message.out .chat-message-inner {
  
-}
+} */
 
 
 .chat-message-time {
@@ -487,8 +487,7 @@ dd {
   margin-top: 6px;
 }
 
-
-.alert {
+div.box{
   position: fixed;
   bottom: 12px;
   right: 12px;
