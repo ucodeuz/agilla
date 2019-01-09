@@ -14,4 +14,5 @@
 <script src="/admin/js/bootstrap.js"></script>
 <script src="/admin/js/tablednd.js"></script>
 <script src="/admin/js/main.js"></script>
+<script src="/admin/js/custom.js"></script>
 <script src="/admin/js/autosize.js"></script>

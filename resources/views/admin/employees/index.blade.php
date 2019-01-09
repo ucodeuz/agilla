@@ -23,7 +23,7 @@
         @foreach ($employees as $employee)
         <tr>
         <td>{{ $employee->id }}</td>
-          <td><a class="font-weight-bold" data-toggle="modal" data-target="#employeeView">{{$employee->name}}</a></td>
+        <td><a class="font-weight-bold item_detail" data-toggle="modal">{{$employee->name}}</a></td>
           <td>{{ $employee->employee_type}}</td>
           <td>
             <div class="table-action">
