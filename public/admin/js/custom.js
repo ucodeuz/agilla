@@ -23,10 +23,6 @@ $('.item_detail').on('click', function(){
             }
        });
 });
-// display hide modal
-$('.close').on('click',function(){
-    $(this).parents('.modal').modal('hide');
-});
 
 });
 // end main functions
