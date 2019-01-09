@@ -1,32 +1,45 @@
-@if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
+@if(count($errors)>0)
+<div class="box no-border">
+    <div class="box-tools">
+        @foreach($errors->all() as $message)
+        <p class="alert alert-danger alert-dismissible"> {{ $message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </p>
+        @endforeach
     </div>
-@endif
-
-@if (session('success'))
-    <div class="alert alert-success  alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert"><i class="icon icon-close"></i></button>
-        {{ session('success') }}
+</div>
+@elseif(session()->has('message'))
+<div class="box-tools">
+    <p class="alert alert-success alert-dismissible">
+        {{ session()->get('message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </p>
+</div>
+@elseif(session()->has('error'))
+<div class="box no-border">
+    <div class="box-tools">
+        <p class="alert alert-danger alert-dismissible">
+            {{ session()->get('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </p>
     </div>
-@endif
-
-@if (session('errors'))
-    @foreach (session('errors') as $error)
-        <div class="alert alert-danger" role="alert">
-            {{ $error }}
-        </div>
-    @endforeach
-@endif
-
-@if (session('error'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('error') }}
+</div>
+@elseif(session()->has('warning'))
+<div class="box no-border">
+    <div class="box-tools">
+        <p class="alert alert-warning alert-dismissible">
+            {{ session()->get('warning') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </p>
     </div>
-@endif
-
-@if (session('info'))
-    <div class="alert alert-info" role="alert">
-        {{ session('info') }}
+</div>
+@elseif(session()->has('success'))
+<div class="box no-border">
+    <div class="box-tools">
+        <p class="alert alert-success alert-dismissible">
+            {{ session()->get('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </p>
     </div>
+</div>
 @endif
