@@ -12,11 +12,11 @@
         </dl>
         <dl>
           <dt>Имя и фамилия</dt>
-          <dd class="employee_name">Jaloliddin Kholmatov</dd>
+          <dd class="employee_name"></dd>
         </dl>
         <dl>
           <dt>Email</dt>
-          <dd class="employee_email">jaloliddin_kholmatov@prisma.uz</dd>
+          <dd class="employee_email"></dd>
         </dl>
       </div>
     </form>
