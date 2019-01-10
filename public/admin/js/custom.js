@@ -21,33 +21,19 @@ $(function () {
   // Item_detail display model
   $('.item_detail').on('click', function(){
       modalLoaderShow();
-      $id = $(this).closest('td').prev('td').text();
+      var id = $(this).data('target-id');
+      var location = $(this).parents('.table').data('location');
+      var targetModal = $(this).parents('.table').data('target-modal');
       $.ajax({
           type: "get",
-          url: '/cp/'+ getLocationLast()+'/'+ $id,
+          url: location+'/'+ id,
               success: function( data ) {
-               switch (getLocationLast()) {
-                   case 'employees':
-                       showEmployeesModal(data);
-                       break;
-                   default:
-                      console.log('this location is empty');
-                       break;
-                  }
+                $(targetModal + ' .modal-content .modal-body').html(data.html);
+                $(targetModal).modal('show');
+                modalLoaderHide();
               }
          });
   });
-  
-  // Modal show for employees gridview
-  function showEmployeesModal(data){
-      modalLoaderHide();
-//      $('.employee_id').text(employee.id);
-//      $('.employee_role').text(employee.employee_type);
-//      $('.employee_name').text(employee.name);
-//      $('.employee_email').text(employee.email + '@prisma.uz');
-      console.log(data)
-      $('#employeeView').modal('show');
-  }
   
   // getting current window Location last element
   function getLocationLast() {

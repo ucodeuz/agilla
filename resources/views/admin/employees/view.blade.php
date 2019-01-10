@@ -6,18 +6,7 @@
         <button type="button" class="close" data-dismiss="modal"><i class="icon icon-close"></i></button>
       </div>
       <div class="modal-body">
-        <dl>
-          <dt>Роль</dt>
-          <dd class="employee_role"></dd>
-        </dl>
-        <dl>
-          <dt>Имя и фамилия</dt>
-          <dd class="employee_name"></dd>
-        </dl>
-        <dl>
-          <dt>Email</dt>
-          <dd class="employee_email"></dd>
-        </dl>
+          
       </div>
     </form>
   </div>
