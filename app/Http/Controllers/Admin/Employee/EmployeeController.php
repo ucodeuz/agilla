@@ -64,7 +64,8 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = Employee::findOrFail($id);
-        return response()->json($employee);
+        $returnHTML =  view('admin.employees.viewitem',['employee_view'=> $employee])->render();
+        return response()->json(['html'=>$returnHTML]);
     }
 
     /**

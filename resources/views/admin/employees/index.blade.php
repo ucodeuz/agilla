@@ -10,7 +10,7 @@
 </div>
 <div class="page-content">
   <div class="card">
-    <table class="table table-hover">
+    <table class="table table-hover" data-target-modal="#employeeView" data-location="/cp/employees">
       <thead>
         <tr>
           <th width="8%">ID</th>
@@ -21,11 +21,9 @@
       </thead>
       <tbody>
         @foreach ($employees as $employee)
-        <tr>
+        <tr data-id={{ $employee->id }}>
         <td>{{ $employee->id }}</td>
-        <td>
-          <a class="font-weight-bold item_detail" data-target="#employeeView" data-target-id="{{ $employee->id }}" data-toggle="modal">{{$employee->name}}</a>
-        </td>
+        <td><a class="font-weight-bold item_detail" data-toggle="modal" data-target-id="{{ $employee->id }}">{{$employee->name}}</a></td>
           <td>{{ $employee->employee_type}}</td>
           <td>
             <div class="table-action">
