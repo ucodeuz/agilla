@@ -31,7 +31,6 @@ $(function () {
                 $(targetModal + ' .modal-content .modal-body').html(data.html);
                 $(targetModal).modal('show');
                 modalLoaderHide();
-                console.log( data.html )
               }
          });
   });
