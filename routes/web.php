@@ -28,6 +28,9 @@ Route::group([
     Route::get('profile', 'Cabinet\HomeController@index')->name('profile');
     Route::put('profile', 'Cabinet\HomeController@update')->name('profile.update');
     Route::resource('employees', 'Employee\EmployeeController');
+    Route::get('regions', function(){
+        return view('/admin/regions/index');
+    });
 });
 
 
