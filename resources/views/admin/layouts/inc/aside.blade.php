@@ -44,7 +44,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/regions">
+        <a class="nav-link" href="/cp/regions">
           <i class="icon icon-map"></i>
           <span class="text">Регионы</span>
         </a>
