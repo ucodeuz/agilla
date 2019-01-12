@@ -37,5 +37,4 @@
   </div>
 </div>
 @include('admin.employees.add')
-@include('admin.employees.view')
 @endsection

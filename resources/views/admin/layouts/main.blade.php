@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -12,6 +10,7 @@
       @include('admin.layouts.partials.flesh')
       @yield('content')
     </main>
+    @include('admin.layouts.partials.modal')
   </div>
 </body>
 </html>

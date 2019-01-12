@@ -28,8 +28,8 @@ $(function () {
           type: "get",
           url: location+'/'+ id,
               success: function( data ) {
-                $(targetModal + ' .modal-content .modal-body').html(data.html);
-                $(targetModal).modal('show');
+                $('#viewModal .modal-dialog').html(data.html);
+                $('#viewModal').modal('show');
                 modalLoaderHide();
               }
          });
