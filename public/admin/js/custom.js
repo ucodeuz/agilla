@@ -23,7 +23,6 @@ $(function () {
       modalLoaderShow();
       var id = $(this).data('target-id');
       var location = $(this).parents('.table').data('location');
-      var targetModal = $(this).parents('.table').data('target-modal');
       $.ajax({
           type: "get",
           url: location+'/'+ id,

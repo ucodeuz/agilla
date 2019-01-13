@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Region;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Region;
 
 class RegionController extends Controller
 {
@@ -14,7 +15,8 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return view('admin.regions.index');
+       $regions = Region::type()->get();
+        return view('admin.regions.index', compact('regions'));
     }
 
     /**
@@ -46,7 +48,9 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        //
+        $region = Region::findOrFail($id);
+        $returnHTML = view('admin.regions.view', ['region_view' => $region])->render();
+        return response()->json(['html' => $returnHTML]);
     }
 
     /**

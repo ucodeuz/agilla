@@ -44,7 +44,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/cp/regions">
+        <a class="nav-link" href="{{ route('regions.index') }}">
           <i class="icon icon-map"></i>
           <span class="text">Регионы</span>
         </a>
