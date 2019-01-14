@@ -1,5 +1,8 @@
 @extends('admin.layouts.main')
 @section('content')
+<script type="text/javascript">
+    var regions = <?=$regions?>
+</script>
 <div class="page-header">
   <div class="page-header-main">
     <ol class="breadcrumb">

@@ -33,7 +33,52 @@ $(function () {
               }
          });
   });
-  
+// Regions for (add and edit) pages, select type option change load related data
+  $('#regionType').on('change', function(){
+    var type_id = this.value;
+    if(type_id == 3){
+        type_id = 2;
+    }
+    var url = "/cp/regions/types?type="+ type_id;
+    $('.region_parent select').empty();
+    $('.region_parent select').append('<option value="0" selected disabled>Невыбран</option>');
+    if(type_id != 1){
+        $.ajax({
+            type: "get",
+            url: url,
+                success: function( data ) {
+                  $('.region_parent select').html(data.html);
+                  $('.region_parent select').parents('.form-group').removeClass('d-none');
+                }
+        });
+    }
+  });
+  // Region select changed find city
+  $('#groupRegion').on('change', function(){
+    var region_id = this.value;
+    var type= $("#regionType option:selected").val();
+    if(type == '2' && region_id){
+        return;
+    }
+    if(type == 3){
+        type = 2;
+    }
+    if($('#groupRegion').children('option').hasClass('parent')){
+        return;
+    }
+    var url = "/cp/regions/types?type="+ type + "&id="+ region_id;
+
+        $.ajax({
+        type: "get",
+        url: url,
+            success: function( data ) {
+                $('.region_parent select').html(data.html);
+                $('.region_parent select').parents('.form-group').removeClass('d-none');
+            }
+        });
+    // }
+    
+});
 
   
   // getting current window Location last element

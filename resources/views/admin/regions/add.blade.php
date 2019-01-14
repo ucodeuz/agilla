@@ -25,10 +25,10 @@
           </div>
           <div class="form-group form-row form-item-required">
               <div class="col-4 col-form-label">
-                <label class="form-label" for="group">Тип</label>
+                <label class="form-label" for="regionType">Тип</label>
               </div>
               <div class="col-8">
-                <select class="custom-select" id="group" name="type" required>
+                <select class="custom-select" id="regionType" name="type" required>
                   <option value="0" selected disabled>Невыбран</option>
                     <option value="1">Область</option>
                     <option value="2">Город</option>
@@ -36,17 +36,24 @@
                 </select>
               </div>
           </div>
-          <div class="form-group form-row form-item-required">
+          <div class="form-group form-row form-item-required d-none">
               <div class="col-4 col-form-label">
-                <label class="form-label" for="group">Имя родителей</label>
+                <label class="form-label" for="groupRegion">Имя родителей</label>
               </div>
-              <div class="col-8">
-                <select class="custom-select" id="group" name="parent_id" required>
-                  <option value="0" selected disabled>Невыбран</option>
-                    @foreach ($regions as $region)
-                      <option value="{{ $region->id }}"> {{ $region->name_ru }}</option>    
-                    @endforeach
-                </select>
+              <div class="col-8 region_parent">
+                  <select class="custom-select" id="groupRegion" name="parent_id" required>
+                      <option value="0" selected disabled>Невыбран</option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group form-row form-item-required d-none">
+              <div class="col-4 col-form-label">
+                <label class="form-label" for="groupCity">Имя родителей</label>
+              </div>
+              <div class="col-8 city_parent">
+                  <select class="custom-select" id="groupCity" name="city_id" required>
+                      <option value="0" selected disabled>Невыбран</option>
+                  </select>
               </div>
           </div>
       </div>

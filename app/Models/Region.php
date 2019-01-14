@@ -15,20 +15,17 @@ class Region extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name_ru'
             ]
         ];
     }
-
-    public function parent()
-    {
-        return $this->belongsTo('App\Models\Region', 'parent_id');
-    }
-
-    public function children()
-    {
-        return $this->hasMany('App\Models\Region', 'parent_id');
-    }
+    public function children(){
+        return $this->hasMany( 'App\Models\Region', 'parent_id', 'id' );
+      }
+      
+      public function parent(){
+        return $this->hasOne( 'App\Models\Region', 'id', 'parent_id' );
+      }
 
     public function scopeType(Builder $builder, $typeId = 1)
     {

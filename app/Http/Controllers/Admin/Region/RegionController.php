@@ -24,9 +24,26 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request){
+
+
+    }
+
+
+    public function type(Request $request)
+    {       $parent = false;
+            if($request->type && $request->id){
+                $parent = true;
+                $regions = Region::with('parent')->where([
+                    'parent_id' => $request->id,
+                    'type' => $request->type
+                ])->get();
+            }else{
+                $parent = false;
+                $regions = Region::type()->get();
+            }
+            $returnHTML =  view('admin.regions.actions.select',['data'=> $regions, 'type' => $parent])->render();
+            return response()->json(['html'=>$returnHTML]);
     }
 
     /**
@@ -37,7 +54,17 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $this->validate($request,[
+            'name_ru' => 'required|string',
+            'name_uz' => 'required|string',
+            'type' => 'required',
+        ]);
+        $input = $request->all();
+        // if($input['parent_id'] == '0' || !$input['parent_id'] ){
+        $region = Region::create($input);
+        return redirect()->route('regions.index')
+        ->with('success', 'Region created successfully');    
     }
 
     /**
@@ -61,7 +88,10 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $regions = Region::findOrFail($id);
+          Javascript::put([
+            'regions' => $regions
+        ]);
     }
 
     /**
