@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cp/dashboard';
+    protected $redirectTo = 'cp/dashboard';
     /**
      * Create a new controller instance.
      *
@@ -47,55 +47,16 @@ class LoginController extends Controller
             return view('admin.auth.login');
         }
     }
-    
-    public function login(Request $request){
-        $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-        ]);
-        
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-
-    }
-
-    protected function attemptLogin(Request $request)
+ 
+    protected function guard()
     {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
-        );
-    }
-
-    protected function credentials(Request $request)
-    {
-        return $request->only($this->username(), 'password');
-    }
-
-    protected function sendLoginResponse(Request $request)
-    {
-        $request->session()->regenerate();
-
-        $this->clearLoginAttempts($request);
-
-        return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath());
+        return Auth::guard('admin');
     }
 
     public function logout(Request $request)
     {
         $this->guard()->logout();
         $request->session()->invalidate();
-        return redirect('/');
-    }
-
-    public function username()
-    {
-        return 'email';
-    }
-    
-    protected function guard()
-    {
-        return Auth::guard('admin');
+        return redirect('/cp');
     }
 }
