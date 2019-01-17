@@ -38,7 +38,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/categories">
+          <a class="nav-link" href="{{ route('categories.index') }}">
           <i class="icon icon-folder"></i>
           <span class="text">Категории</span>
         </a>

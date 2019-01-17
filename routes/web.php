@@ -30,6 +30,7 @@ Route::group([
     Route::resource('employees', 'Employee\EmployeeController');
     Route::get('regions/types', 'Region\RegionController@type')->name('regions.types');
     Route::resource('regions', 'Region\RegionController');
+    Route::resource('categories', 'Category\CategoryController');
 });
 
 
