@@ -23,6 +23,14 @@
               <input class="form-control" id="addRegionNameRu" name="name_ru" type="text" required>
             </div>
           </div>
+          <div class="form-group form-row">
+            <div class="col-4 col-form-label">
+              <label class="form-label" for="addSlug">Slug</label>
+            </div>
+            <div class="col-8">
+              <input class="form-control" id="addSlug" name="slug" type="text">
+            </div>
+          </div>
           <div class="form-group form-row form-item-required">
               <div class="col-4 col-form-label">
                 <label class="form-label" for="regionType">Тип</label>
