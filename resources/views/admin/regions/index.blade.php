@@ -1,8 +1,5 @@
 @extends('admin.layouts.main')
 @section('content')
-<script type="text/javascript">
-    var regions = <?=$regions?>
-</script>
 <div class="page-header">
   <div class="page-header-main">
     <ol class="breadcrumb">
@@ -37,7 +34,7 @@
               <td>Узбекистан</td>
               <td>
                 <div class="table-action">
-                  <a class="btn btn-icon item_edit" href="javascript:void(0)" data-toggle="modal" data-target="#regionEdit" title="Редактировать"><i class="icon icon-edit"></i></a>
+                  <a class="btn btn-icon item_edit" href="javascript:void(0)" data-toggle="modal" data-target-id="{{ $region->id }}" title="Редактировать"><i class="icon icon-edit"></i></a>
                 </div>
               </td>
             </tr>
