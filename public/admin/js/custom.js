@@ -1,40 +1,40 @@
-$(function () {
-  
-  // Modal Loading Show
-  function modalLoaderShow(){
+$(function () {  
+//  Modal Loading Show
+function modalLoaderShow(){
     $('.modal-loader').remove();
     $('body').append('<div class="modal-loader"><div></div><div></div><div></div><div></div><div></div></div>');
-  };
+};
 
-  // Modal Loading Hidden
-  function modalLoaderHide(){
+//  Modal Loading Hidden
+function modalLoaderHide(){
     $('.modal-loader').remove();
-  };
+};
 
-  // Set ajax csrf token for sending forms post method
-      $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
-  
-  // Item_detail display model
-  $('.item_detail').on('click', function(){
-      modalLoaderShow();
-      var id = $(this).data('target-id');
-      var location = $(this).parents('.table').data('location');
-      $.ajax({
-          type: "get",
-          url: location+'/'+ id,
-              success: function( data ) {
-                $('#viewModal .modal-dialog').html(data.html);
-                $('#viewModal').modal('show');
-                modalLoaderHide();
-              }
-         });
-  });
-// Regions for (add and edit) pages, select type option change load related data
-  $('#regionType').on('change', function(){
+//  Set ajax csrf token for sending forms post method
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+//  Item_detail display model
+$('.item_detail').on('click', function(){
+    modalLoaderShow();
+    var id = $(this).data('target-id');
+    var location = $(this).parents('.table').data('location');
+    $.ajax({
+        type: "get",
+        url: location+'/'+ id,
+            success: function( data ) {
+            $('#viewModal .modal-dialog').html(data.html);
+            $('#viewModal').modal('show');
+            modalLoaderHide();
+        }
+    });
+});
+
+//  Regions for (add and edit) pages, select type option change load related data
+$('#regionType').on('change', function(){
     var type_id = this.value;
     if(type_id == 3){
         type_id = 2;
@@ -47,14 +47,15 @@ $(function () {
             type: "get",
             url: url,
                 success: function( data ) {
-                  $('.region_parent select').html(data.html);
-                  $('.region_parent select').parents('.form-group').removeClass('d-none');
-                }
+                $('.region_parent select').html(data.html);
+                $('.region_parent select').parents('.form-group').removeClass('d-none');
+            }
         });
     }
-  });
-  // Region select changed find city
-  $('#groupRegion').on('change', function(){
+});
+
+//  Region select changed find city
+$('#groupRegion').on('change', function(){
     var region_id = this.value;
     var type= $("#regionType option:selected").val();
     if(type == '2' && region_id){
@@ -67,24 +68,37 @@ $(function () {
         return;
     }
     var url = "/cp/regions/types?type="+ type + "&id="+ region_id;
-
         $.ajax({
         type: "get",
         url: url,
             success: function( data ) {
-                $('.region_parent select').html(data.html);
-                $('.region_parent select').parents('.form-group').removeClass('d-none');
-            }
-        });
-    // }
-    
+            $('.region_parent select').html(data.html);
+            $('.region_parent select').parents('.form-group').removeClass('d-none');
+        }
+    });
 });
 
-  
-  // getting current window Location last element
-  function getLocationLast() {
-      var locationall = window.location.toString();
-      var location = locationall.split('/').pop();
-      return location;
-  }
+//  Regions edit actions
+$('.item_edit').on('click', function(){
+    modalLoaderShow();
+    var id = $(this).data('target-id');
+    var location = '/cp/regions/'+ id +'/edit';
+    $.ajax({
+        type: "get",
+        url: location,
+            success: function( data ) {
+            $('#regionEdit .modal-dialog').html(data.html);
+            $('#regionEdit').modal('show');
+            modalLoaderHide();
+        }
+    });
+});
+
+//  Getting current window Location last element
+function getLocationLast() {
+    var locationall = window.location.toString();
+    var location = locationall.split('/').pop();
+    return location;
+}
+
 });

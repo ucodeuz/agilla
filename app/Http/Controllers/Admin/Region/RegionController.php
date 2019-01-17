@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Region;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Region;
-
+use Gate;
 class RegionController extends Controller
 {
     /**
@@ -87,11 +87,13 @@ class RegionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $regions = Region::findOrFail($id);
-          Javascript::put([
-            'regions' => $regions
-        ]);
+    {  
+        if(!Gate::allows('isAdministrator')){
+            abort(404);
+        }
+        $region = Region::findOrFail($id);
+        $returnHTML = view('admin.regions.actions.editModal', ['region' => $region])->render();
+        return response()->json(['html' => $returnHTML]);
     }
 
     /**
@@ -103,7 +105,13 @@ class RegionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name_ru' => 'required|string',
+            'name_uz' => 'required|string',
+        ]);
+        $region = Region::findOrFail($id)->update($request->all());
+        return redirect()->route('regions.index')
+        ->with('success', 'Region updated successfully');
     }
 
     /**
