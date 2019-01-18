@@ -13,10 +13,29 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $regions = Region::type()->get();
-        return view('admin.regions.index', compact('regions'));
+        $province = $request->province ?? null;
+        $city = $request->city ?? null;
+        if($province == 'all'){
+            $province = null;
+        }
+        if($city == 'all'){
+            $city = null;
+        }
+        $regions = Region::type($request->type)
+        ->when(!is_null($province), function ($query) use ($province) {
+            $query->whereParentId($province);
+        })
+        ->when(!is_null($city), function ($query) use ($city, $province) {
+            $query->where([
+                'parent_id' => $province
+            ]);
+        })
+        ->get();
+        $regionsTypeAll = Region::type()->get();
+        $regionsTypeTwo = Region::type(2)->get();
+        return view('admin.regions.index', compact('regions','regionsTypeAll','regionsTypeTwo'));
     }
 
     /**

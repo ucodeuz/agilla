@@ -29,6 +29,6 @@ class Region extends Model
 
     public function scopeType(Builder $builder, $typeId = 1)
     {
-        $builder->where('type', $typeId);
+            $builder->where('type', $typeId);
     }
 }
