@@ -7,13 +7,31 @@
     </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#regionsAdd" role="button">Добавить регион</a>
   </div>
-  <div class="page-header-extra">
+  <form class="page-header-extra" id="regionsFilter">
     <div class="row">
       <div class="col-auto">
-        
+        <select class="custom-select" name="type" onchange="$('#regionsFilter').submit();">
+          <option value="1">Области</option>
+          <option value="2">Города</option>
+          <option value="3">Районы</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <select class="custom-select" name="province" onchange="$('#regionsFilter').submit();">
+          <option value="0" selected>Все области</option>
+          <option value="1">Ферганская област</option>
+          <option value="2">Ташкентская област</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <select class="custom-select" name="city" onchange="$('#regionsFilter').submit();">
+          <option value="0" selected>Все города</option>
+          <option value="1">Фергана</option>
+          <option value="2">Маргилан</option>
+        </select>
       </div>
     </div>
-  </div>
+  </form>
 </div>
 <div class="page-content">
   <div class="card">
