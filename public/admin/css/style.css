@@ -88,7 +88,7 @@
   width: 240px;
   height: 100%;
   overflow: hidden;
-  background-color: #1a1d30;
+  background-color: #2d2d4f;
 }
 .aside-inner {
   display: flex;
@@ -143,12 +143,13 @@
 }
 .aside-nav .nav-link .icon {
   margin-right: 16px;
+  color: #9da4ff;
 }
 .aside-nav .nav-link:hover {
   background-color: rgba(255,255,255,0.05);
 }
 .aside-nav .nav-link.active {
-  background-color: #5c6ac4;
+  background-color: #666fe8;
   color: #fff;
 }
 .aside-nav .nav-item .badge {
