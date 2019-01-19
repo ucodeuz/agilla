@@ -10,7 +10,7 @@
   <form class="page-header-extra" id="regionsFilter">
     <div class="row">
       <div class="col-auto">
-      <select class="custom-select type" name="type" data-fetch="{{ Request::get('type') ?? '' }}" onchange="$('#regionsFilter').submit();">
+      <select class="custom-select type" name="type" data-fetch="{{ Request::get('type') ?? '' }}" onchange="typeChanged(this)">
           <option value="1" @if(request()->type == 1 || !request()->type) selected @endif>Области</option>
           <option value="2" @if(request()->type == 2) selected @endif>Города</option>
           <option value="3" @if(request()->type == 3) selected @endif>Районы</option>
@@ -28,7 +28,7 @@
         <select class="custom-select city" name="city" onchange="$('#regionsFilter').submit();" disabled>
           <option value="all" selected>Все города</option>
           @foreach ($regionsTypeTwo as $region)
-            <option value="{{ $region->id }}" @if(request()->province == $region->id) selected @endif>{{ $region->name_ru }}</option>
+            <option value="{{ $region->id }}" @if(request()->city == $region->id) selected @endif>{{ $region->name_ru }}</option>
           @endforeach
         </select>
       </div>
@@ -68,17 +68,30 @@
 @include('admin.regions.edit')
 <script>
   $(document).ready(function () {
-    var typeId = $('.type').data('fetch');
-        if (typeId == 2) {
-            $('.province').prop('disabled',false);
-            $('.province').parent('div').removeClass('d-none');
-        } else if(typeId == 3){
-            $('.city, .province').prop('disabled', false);
-            $('.city, .province').parent('div').removeClass('d-none');
-        } else {
-            $('.city, .province').prop('disabled', true);
-            $('.city, .province').parent('div').addClass('d-none');
-        }
+    var typeId = {{ Request::get('type')}};
+    if (typeId == 2) {
+        $('.province').prop('disabled',false);
+        $('.province').parent('div').removeClass('d-none');
+    }else if(typeId == 3){
+        $('.city').prop('disabled', false);
+        $('.city').parent('div').removeClass('d-none');
+    }
   });
+
+  function typeChanged(id){
+    var typeId = (id.value || id.options[id.selectedIndex].value);  //crossbrowser solution =)
+        if (typeId == 2) {
+            $('.city').parent('div').addClass('d-none');
+            $('.city').val($(".city option:first").val()).prop('disabled', true);
+        } else if(typeId == 3){
+            $('.province').parent('div').addClass('d-none');
+            $('.province').val($(".province option:first").val()).prop('disabled', true);
+        } else {
+            $('.city, .province').parent('div').addClass('d-none');
+            $('.city').val($(".city option:first").val()).prop('disabled', true);
+            $('.province').val($(".province option:first").val()).prop('disabled', true);
+        }
+        $('#regionsFilter').submit();
+      }
 </script>
 @endsection

@@ -13,29 +13,40 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Region $region)
     {
-        $province = $request->province ?? null;
-        $city = $request->city ?? null;
-        if($province == 'all'){
-            $province = null;
-        }
-        if($city == 'all'){
-            $city = null;
-        }
-        $regions = Region::type($request->type)
-        ->when(!is_null($province), function ($query) use ($province) {
-            $query->whereParentId($province);
-        })
-        ->when(!is_null($city), function ($query) use ($city, $province) {
-            $query->where([
-                'parent_id' => $province
-            ]);
-        })
-        ->get();
-        $regionsTypeAll = Region::type()->get();
-        $regionsTypeTwo = Region::type(2)->get();
-        return view('admin.regions.index', compact('regions','regionsTypeAll','regionsTypeTwo'));
+        $regionsTypeAll = $region->type(1)->get();
+        $regionsTypeTwo = $region->type(2)->get();
+        $region = $region->newQuery();
+        if ($request->has('type') && $request->has('province')){
+            if($request->province == "all"){
+                $province = null;
+            }else{
+                $province = $request->province;
+            }
+                $region->where('type', $request->input('type'));
+                $region->when(!is_null($province), function ($query) use ($province) {
+                    $query->whereParentId($province);
+                });
+            }
+            if ($request->has('type') && $request->has('city') && $request->type == 3){
+                if($request->city == "all"){
+                    $city = null;
+                }else{
+                    $city = $request->city;
+                }
+                    $region->where('type', 3);
+                    $region->when(!is_null($city), function ($query) use ($city) {
+                        $query->whereParentId($city);
+                });
+            }
+            if($request->has('type') && !$request->has('city') && !$request->has('province')){
+                $region->type($request->input('type'));
+            }
+            $regions = $region->with('parent')->get();
+            
+            return view('admin.regions.index', compact('regions','regionsTypeAll','regionsTypeTwo'));
+
     }
 
     /**

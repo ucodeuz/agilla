@@ -31,4 +31,12 @@ class Region extends Model
     {
             $builder->where('type', $typeId);
     }
+
+    public function scopeOfParent($result,$type,$city)
+    {   
+        if($type == 3){
+            $result->where('parent_id', $city);
+            return $result;
+        }
+    }
 }
