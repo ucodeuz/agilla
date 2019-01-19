@@ -10,27 +10,33 @@
   <form class="page-header-extra" id="regionsFilter">
     <div class="row">
       <div class="col-auto">
-      <select class="custom-select type" name="type" data-fetch="{{ Request::get('type') ?? '' }}" onchange="typeChanged(this)">
-          <option value="1" @if(request()->type == 1 || !request()->type) selected @endif>Области</option>
+      <select class="custom-select type" name="type" onchange="typeChanged(this)">
+          <option value="1" @if(request()->type == 1 || !request()->has('type')) selected @endif>Области</option>
           <option value="2" @if(request()->type == 2) selected @endif>Города</option>
           <option value="3" @if(request()->type == 3) selected @endif>Районы</option>
         </select>
       </div>
-      <div class="col-auto d-none">
-        <select class="custom-select province" name="province" onchange="$('#regionsFilter').submit();" disabled>
+      <div class="col-auto">
+        <select class="custom-select province" name="province" onchange="provinChange(this)"  @if(!request()->has('province')) disabled @endif>
           <option value="all" selected>Все области</option>
           @foreach ($regionsTypeAll as $region)
             <option value="{{ $region->id }}" @if(request()->province == $region->id) selected @endif>{{ $region->name_ru }}</option>
           @endforeach
         </select>
       </div>
-      <div class="col-auto d-none">
-        <select class="custom-select city" name="city" onchange="$('#regionsFilter').submit();" disabled>
+      <div class="col-auto">
+        <select class="custom-select city" name="city" @if(!request()->has('city')) disabled @endif>
           <option value="all" selected>Все города</option>
-          @foreach ($regionsTypeTwo as $region)
-            <option value="{{ $region->id }}" @if(request()->city == $region->id) selected @endif>{{ $region->name_ru }}</option>
-          @endforeach
+          @if(!is_null($cityAll))
+            @foreach ($cityAll as $city)
+              <option value="{{ $city->id }}" @if(request()->city == $city->id) selected @endif>{{ $city->name_ru }}</option>
+            @endforeach
+          @endif
         </select>
+      </div>
+      <div class="col-auto">
+          <button class="btn btn-primary" type="submit">Filter</button>
+          {{-- <a class="ml-auto btn btn-info" href="#" onchange="$('#regionsFilter').submit();">Filter регион</a> --}}
       </div>
     </div>
   </form>
@@ -63,35 +69,6 @@
     </table>
   </div>
 </div>
-
 @include('admin.regions.add')
 @include('admin.regions.edit')
-<script>
-  $(document).ready(function () {
-    var typeId = <?php echo Request::get('type') ?? 0?>;
-    if (typeId == 2) {
-        $('.province').prop('disabled',false);
-        $('.province').parent('div').removeClass('d-none');
-    }else if(typeId == 3){
-        $('.city').prop('disabled', false);
-        $('.city').parent('div').removeClass('d-none');
-    }
-  });
-
-  function typeChanged(id){
-    var typeId = (id.value || id.options[id.selectedIndex].value);  //crossbrowser solution =)
-        if (typeId == 2) {
-            $('.city').parent('div').addClass('d-none');
-            $('.city').val($(".city option:first").val()).prop('disabled', true);
-        } else if(typeId == 3){
-            $('.province').parent('div').addClass('d-none');
-            $('.province').val($(".province option:first").val()).prop('disabled', true);
-        } else {
-            $('.city, .province').parent('div').addClass('d-none');
-            $('.city').val($(".city option:first").val()).prop('disabled', true);
-            $('.province').val($(".province option:first").val()).prop('disabled', true);
-        }
-        $('#regionsFilter').submit();
-      }
-</script>
 @endsection

@@ -49,17 +49,7 @@
                 <label class="form-label" for="groupRegion">Имя родителей</label>
               </div>
               <div class="col-8 region_parent">
-                  <select class="custom-select" id="groupRegion" name="parent_id" required>
-                      <option value="0" selected disabled>Невыбран</option>
-                  </select>
-              </div>
-          </div>
-          <div class="form-group form-row form-item-required d-none">
-              <div class="col-4 col-form-label">
-                <label class="form-label" for="groupCity">Имя родителей</label>
-              </div>
-              <div class="col-8 city_parent">
-                  <select class="custom-select" id="groupCity" name="city_id" required>
+                  <select class="custom-select" id="groupRegion" name="parent_id">
                       <option value="0" selected disabled>Невыбран</option>
                   </select>
               </div>

@@ -40,14 +40,14 @@ $('#regionType').on('change', function(){
         type_id = 2;
     }
     var url = "/cp/regions/types?type="+ type_id;
-    $('.region_parent select').empty();
+    $('.region_parent select').prop('required', false).empty();
     $('.region_parent select').append('<option value="0" selected disabled>Невыбран</option>');
     if(type_id != 1){
         $.ajax({
             type: "get",
             url: url,
                 success: function( data ) {
-                $('.region_parent select').html(data.html);
+                $('.region_parent select').prop('required', true).html(data.html);
                 $('.region_parent select').parents('.form-group').removeClass('d-none');
             }
         });
@@ -100,5 +100,31 @@ function getLocationLast() {
     var location = locationall.split('/').pop();
     return location;
 }
-
 });
+// regions filter action functions
+function provinChange(id){
+    var provinceId = (id.value || id.options[id.selectedIndex].value);
+    var typeId = $('.type').val();
+    if(typeId == 3){
+      var url = "/cp/regions/city?type="+ typeId + "&id="+ provinceId;
+      $.ajax({
+      type: "get",
+      url: url,
+          success: function( data ) {
+              $('.city').html(data.html);
+              $('.city').val($(".city option:first").val()).prop('disabled', false);
+          }
+      });
+    }else{
+      $('.city').val($(".city option:first").val()).prop('disabled', true);
+    }
+}
+function typeChanged(id){
+    $('.city').val($(".city option:first").val()).prop('disabled', true);
+    var typeId = (id.value || id.options[id.selectedIndex].value);
+      if (typeId == 2 || typeId == 3) {
+          $('.province').val($(".province option:first").val()).prop('disabled', false);
+      }else{
+          $('.province').val($(".province option:first").val()).prop('disabled', true);
+      }
+    }
