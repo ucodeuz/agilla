@@ -68,7 +68,7 @@
 @include('admin.regions.edit')
 <script>
   $(document).ready(function () {
-    var typeId = {{ Request::get('type')}};
+    var typeId = <?php echo Request::get('type') ?? 0?>;
     if (typeId == 2) {
         $('.province').prop('disabled',false);
         $('.province').parent('div').removeClass('d-none');
