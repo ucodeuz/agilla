@@ -59,6 +59,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function sort(Request $request)
+    {
+        foreach($request['positions'] as $position){
+            $id = $position[0];
+            $newPosition = $position[1];
+            Category::findOrFail($id)->update(['position' => $newPosition]);
+        }
+        return response()->json(['data' => 'success']);
+        // return redirect()->route('regions.index')
+        // ->with('success', 'Region updated successfully');
+    }
+
     public function edit($id)
     {
         //

@@ -224,7 +224,7 @@
 .categories-table .tDnD_whileDrag {
   box-shadow: 0 0 5px rgba(0,0,0,0.05);
 }
-.categories-table .handle {
+.categories-table .handler {
   cursor: move;
 }
 

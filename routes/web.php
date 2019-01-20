@@ -31,6 +31,7 @@ Route::group([
     Route::get('regions/types', 'Region\RegionController@type')->name('regions.types');
     Route::resource('regions', 'Region\RegionController');
     Route::resource('categories', 'Category\CategoryController');
+    Route::post('categories/sort', 'Category\CategoryController@sort')->name('category.sort');
 });
 
 

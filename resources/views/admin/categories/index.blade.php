@@ -12,7 +12,7 @@
 </div>
 <div class="page-content">
   <div class="card">
-    <table class="table table-hover categories-table" id="table_cat" data-location="/cp/categories">
+    <table class="table table-hover categories-table" data-location="/cp/categories">
       <thead>
         <tr>
           <th width="0%"></th>
@@ -23,8 +23,8 @@
       </thead>
       <tbody>
         @foreach ($categories as $category)
-        <tr>
-          <td class="handle"><i class="icon icon-move-grabber"></i></td>
+        <tr data-index="{{ $category->id }}" data-position="{{ $category->position }}">
+          <td></td>
             <td>{{ $category->id }}</td>
             <td><a class="font-weight-bold item_detail" href="javascript:void(0)" data-toggle="modal" title="Подробность" data-target-id="{{ $category->id }}">{{ $category->name_ru }}</a></td>
             <td>
@@ -40,10 +40,57 @@
     </table>
     <div class="card-footer">
       <button class="btn btn-light change_position">Изменить порядок</button>
-      <button class="btn btn-light cancel_position" onclick="window.location()">Отменить изменения порядок</button>
-      <button class="btn btn-primary save_position">Сохранить порядок</button>
+      <button class="btn btn-light cancel_position d-none">Отменить изменения порядок</button>
+      <button class="btn btn-primary save_position d-none" onclick="saveNewPositions()">Сохранить порядок</button>
     </div>
   </div>
 </div>
 @include('admin.categories.add')
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.change_position').on('click',function(){
+      $('.cancel_position, .save_position').removeClass('d-none');
+      $('.categories-table tbody tr td:first-child').addClass('handler').html('<i class="icon icon-move-grabber"></i>');
+      $('.categories-table tbody').sortable({
+      helper: fixHelper,
+      handle: '.handler',
+      update: function(event,ui){
+      $(this).children().each(function(index){
+            if($(this).attr('data-position') != (index+1)) {
+              $(this).attr('data-position', (index+1)).addClass('updated');
+            }
+        });
+      }
+    }).disableSelection();
+  });
+  $('.cancel_position').on('click',function(){
+    window.location.reload();
+  });
+});
+function saveNewPositions(){
+  var position = [];
+  $('.updated').each(function(){
+      position.push([$(this).attr('data-index'), $(this).attr('data-position')]);
+      $(this).removeClass('updated');
+  });
+  $.ajax({
+    url: '/cp/categories/sort',
+    method: 'POST',
+    dataType: 'text',
+    data: {
+      positions: position
+    },
+    success: function(responce){
+        location.reload();
+      }
+    });
+  };
+  var fixHelper = function (e, ui) {
+      ui.children().each(function () {
+      $(this).width($(this).width());
+  });
+  return ui;
+};
+</script>
 @endsection
