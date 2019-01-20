@@ -7,7 +7,7 @@
     </ol>
     <a class="ml-auto btn btn-success" href="#" data-toggle="modal" data-target="#regionsAdd" role="button">Добавить регион</a>
   </div>
-  <form class="page-header-extra" id="regionsFilter">
+  <form class="page-header-extra" id="regionsFilter" method="GET" action="{{ route('regions.index') }}">
     <div class="row">
       <div class="col-auto">
       <select class="custom-select type" name="type" onchange="typeChanged(this)">
@@ -25,7 +25,7 @@
         </select>
       </div>
       <div class="col-auto">
-        <select class="custom-select city" name="city" @if(!request()->has('city')) disabled @endif>
+        <select class="custom-select city" name="city" @if(!request()->has('city')) disabled @endif onchange="$('#regionsFilter').submit();">
           <option value="all" selected>Все города</option>
           @if(!is_null($cityAll))
             @foreach ($cityAll as $city)
@@ -33,10 +33,6 @@
             @endforeach
           @endif
         </select>
-      </div>
-      <div class="col-auto">
-          <button class="btn btn-primary" type="submit">Filter</button>
-          {{-- <a class="ml-auto btn btn-info" href="#" onchange="$('#regionsFilter').submit();">Filter регион</a> --}}
       </div>
     </div>
   </form>

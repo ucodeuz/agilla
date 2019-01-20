@@ -106,18 +106,11 @@ function provinChange(id){
     var provinceId = (id.value || id.options[id.selectedIndex].value);
     var typeId = $('.type').val();
     if(typeId == 3){
-      var url = "/cp/regions/city?type="+ typeId + "&id="+ provinceId;
-      $.ajax({
-      type: "get",
-      url: url,
-          success: function( data ) {
-              $('.city').html(data.html);
-              $('.city').val($(".city option:first").val()).prop('disabled', false);
-          }
-      });
+      $('.city').val($(".city option:first").val()).prop('disabled', false);
     }else{
       $('.city').val($(".city option:first").val()).prop('disabled', true);
     }
+    $('#regionsFilter').submit();
 }
 function typeChanged(id){
     $('.city').val($(".city option:first").val()).prop('disabled', true);
@@ -127,4 +120,5 @@ function typeChanged(id){
       }else{
           $('.province').val($(".province option:first").val()).prop('disabled', true);
       }
+      $('#regionsFilter').submit();
     }

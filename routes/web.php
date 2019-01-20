@@ -29,7 +29,6 @@ Route::group([
     Route::put('profile', 'Cabinet\HomeController@update')->name('profile.update');
     Route::resource('employees', 'Employee\EmployeeController');
     Route::get('regions/types', 'Region\RegionController@type')->name('regions.types');
-    Route::get('regions/city', 'Region\RegionController@city')->name('regions.city');
     Route::resource('regions', 'Region\RegionController');
     Route::resource('categories', 'Category\CategoryController');
 });

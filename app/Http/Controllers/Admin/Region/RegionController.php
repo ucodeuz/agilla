@@ -28,16 +28,25 @@ class RegionController extends Controller
         if ($request->has('type') && $request->has('city') && $request->has('province')){
             $city = ($request->city == "all") ? null : $request->city;
             $province = ($request->province == "all") ? null : $request->province;
+            $region->where('type', 3);
+            $region->when(!is_null($city), function ($query) use ($city) {
+                $query->whereParentId($city);
+            });
+            if(is_null($city)){
+                $parentId = Region::whereParentId($province)->pluck('id')->toArray();
+                $region->when(!is_null($province), function ($query) use ($parentId) {
+                    $query->whereIn('parent_id',$parentId);
+                }); 
+            }
             $cityAll = Region::type(2)->when(!is_null($province), function ($query) use ($province) {
                 $query->whereParentId($province);
             })->get();
-            $region->where('type', 3);
-            $region->when(!is_null($city), function ($query) use ($city) {
-                    $query->whereParentId($city);
-            });
         }
         if($request->has('type') && !$request->has('city') && !$request->has('province')){
             $region->type($request->input('type'));
+        }
+        if(!$request->has('type') && !$request->has('city') && !$request->has('province')){
+            $region->type();
         }
         $regions = $region->get();
             
@@ -71,21 +80,6 @@ class RegionController extends Controller
             $returnHTML =  view('admin.regions.actions.select',['data'=> $regions, 'type' => $parent])->render();
             return response()->json(['html'=>$returnHTML]);
     }
-
-    public function city(Request $request)
-    {       
-            if(request()->has('type') && request()->has('id')){
-                $regions = Region::where([
-                    'parent_id' => $request->input('id'),
-                    'type' => 2
-                ])->get();
-                }else{
-                $regions = Region::type(2)->get();
-            }
-            $returnHTML =  view('admin.regions.actions.selectFilter',['data'=> $regions])->render();
-            return response()->json(['html'=>$returnHTML]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
