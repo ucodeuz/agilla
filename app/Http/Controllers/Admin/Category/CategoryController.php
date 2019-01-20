@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -14,9 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.categories.index');
-
+        $categories = Category::with('children','parent')->orderBy('position')->get();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -48,7 +48,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $categoty = Category::findOrFail($id);
+        $returnHTML = view('admin.categories.view', ['category_view' => $categoty])->render();
+        return response()->json(['html' => $returnHTML]);
     }
 
     /**
