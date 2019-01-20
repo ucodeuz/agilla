@@ -1,6 +1,7 @@
 <div class="modal" id="categoryAdd" tabindex="-1">
   <div class="modal-dialog modal-lg" role="document">
-    <form class="modal-content needs-validation" method="post" novalidate>
+    <form class="modal-content needs-validation" method="post" action="{{ route('categories.store') }}" novalidate>
+      @csrf
       <div class="modal-header">
         <div class="modal-title">Новая категория</div>
       </div>
@@ -12,7 +13,7 @@
           <div class="col-8">
             <div class="row">
               <div class="col">
-                <select class="custom-select">
+                <select class="custom-select category">
                   <option value="0" selected>Корневой раздел</option>
                   <option value="1">Транспорт</option>
                   <option value="2">Недвижимость</option>
@@ -55,7 +56,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a class="btn btn-light" role="button">Отмена</a>
+          <button class="btn btn-light" type="button" data-dismiss="modal">Отмена</button>
         <button class="btn btn-primary" type="submit">Создать</button>
       </div>
     </form>

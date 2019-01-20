@@ -52,7 +52,7 @@
         @foreach ($regions as $region)
           <tr>
             <td>{{ $region->id }}</td>
-            <td><a class="font-weight-bold item_detail" href="javascript:void(0)" data-toggle="modal" title="Редактировать" data-target-id="{{ $region->id }}">{{ $region->name_ru }}</a></td>
+            <td><a class="font-weight-bold item_detail" href="javascript:void(0)" data-toggle="modal" title="Подробность" data-target-id="{{ $region->id }}">{{ $region->name_ru }}</a></td>
               <td>Узбекистан</td>
               <td>
                 <div class="table-action">
