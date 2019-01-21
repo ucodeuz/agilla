@@ -17,7 +17,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name_uz' => 'Maxsus texnika va mototsikllar',
                 'name_ru' => 'Спецтехника и мотоциклы',
-                'postion' => 1,
+                'position' => 1,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
 
@@ -25,7 +25,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name_uz' => 'Avtomabil va ehtiyot qismlar',
                 'name_ru' => 'Запчасти и автотовары',
-                'postion' => 2,
+                'position' => 2,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
 
@@ -33,7 +33,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name_uz' => 'Ko`chmas mulk',
                 'name_ru' => 'Недвижимость',
-                'postion' => 3,
+                'position' => 3,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
 
@@ -41,7 +41,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name_uz' => 'Xizmatlar',
                 'name_ru' => 'Услуги',
-                'postion' => 4,
+                'position' => 4,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
 
@@ -49,28 +49,28 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name_uz' => 'Kiyimlar, elektronika va boshqalar',
                 'name_ru' => 'Вещи, электроника и прочее',
-                'postion' => 5,
+                'position' => 5,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ],
             [
                 'name_uz' => 'Bo`sh ish o`rinlar',
                 'name_ru' => 'Вакансии',
-                'postion' => 6,
+                'position' => 6,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ],
             [
                 'name_uz' => 'Hayvonlar',
                 'name_ru' => 'Животные',
-                'postion' => 7,
+                'position' => 7,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ],
             [
                 'name_uz' => 'Bizneslar',
                 'name_ru' => 'Для бизнеса',
-                'postion' => 8,
+                'position' => 8,
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime
             ]
