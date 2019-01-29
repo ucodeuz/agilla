@@ -26,7 +26,7 @@
         <tr data-index="{{ $category->id }}" data-position="{{ $category->position }}">
           <td></td>
             <td>{{ $category->id }}</td>
-            <td><a class="font-weight-bold item_detail" href="javascript:void(0)" data-toggle="modal" title="Подробность" data-target-id="{{ $category->id }}">{{ $category->name_ru }}</a></td>
+            <td><a class="font-weight-bold" href="/cp/categories/{{ $category->id }}">{{ $category->name_ru }}</a></td>
             <td>
               <div class="table-action">
                 <a class="btn btn-icon" href="/categories/edit" title="Редактировать"><i class="icon icon-edit"></i></a>
