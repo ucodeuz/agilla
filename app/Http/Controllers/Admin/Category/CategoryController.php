@@ -48,9 +48,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $categoty = Category::findOrFail($id);
-        $returnHTML = view('admin.categories.view', ['category_view' => $categoty])->render();
-        return response()->json(['html' => $returnHTML]);
+        $category = Category::findOrFail($id)->with('children')->orderBy('position')->first();
+        // dd($category);
+        return view('admin.categories.view', compact('category'));
     }
 
     /**
